@@ -58,8 +58,9 @@ while cap.isOpened():
                 # c = np.sqrt((end[0] - far[0]) ** 2 + (end[1] - far[1]) ** 2)
                 # angle = np.arccos((b ** 2 + c ** 2 - a ** 2) / (2 * b * c))  #      cosine theorem
                 ang = angle(start,end,far)
+                print(start, end, far, ang)
                 # habría que añadir una condición para que haya distancia entre start y end
-                if ang < 90:  # si el angulo es menor que 90
+                if (ang < 90) and ((start[0] - end[0]) > 2):  # si el angulo es menor que 90
                     count += 1
                     cv2.circle(frame, far, 4, [0, 0, 255], -1)
             if count > 0:

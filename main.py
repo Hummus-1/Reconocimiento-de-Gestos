@@ -75,7 +75,7 @@ while True:
         roi = frame[pt1[1]:pt2[1],pt1[0]:pt2[0],:] # Crea el ROI (zona a procesar)
         fgMask = backSub.apply(roi, None, learningRates[currentLearningRateIndex % 2])
         contours, hull = getcnthull(fgMask)
-        # Se comprueba si al menos existe un contorno para seguir y si ademas el learningRate esta bien establecido para que se bloque el fondo actual
+        # Se comprueba que al menos existe un contorno para seguir y que el learningRate esta bien establecido para que se bloquee el fondo actual
         if len(contours) > 0 and currentLearningRateIndex % 2 != 0:
             cv2.drawContours(frame[pt1[1]:pt2[1],pt1[0]:pt2[0],:], contours, -1, (255,255,0), 2)
             cv2.drawContours(frame[pt1[1]:pt2[1],pt1[0]:pt2[0],:], [hull], -1, (0, 255, 255), 2)
